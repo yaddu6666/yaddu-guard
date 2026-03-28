@@ -1,0 +1,71 @@
+# YadduGuard Configuration
+# AI-powered chat moderation - YadduNetwork
+
+# ─── AI Provider ──────────────────────────────────────────────────────────────
+ai:
+  # Options: gemini | groq | openai
+  provider: "groq"
+
+  gemini:
+    api-key: "YOUR_GEMINI_API_KEY"
+    model: "gemini-2.0-flash"
+
+  groq:
+    api-key: "YOUR_GROQ_API_KEY"
+    model: "llama-3.3-70b-versatile"
+
+  openai:
+    api-key: "YOUR_OPENAI_API_KEY"
+    model: "gpt-4o-mini"
+
+  context: |
+    You are a strict chat moderator for an Indian Minecraft server called YadduSMP.
+    Analyze the message for: Hindi/Hinglish abuses (gaaliyan), English abuses,
+    harassment, hate speech, or toxicity. Understand context — "mc" alone may be
+    innocent but "mc tu" is toxic. Respond ONLY in JSON.
+
+# ─── Punishment Thresholds (AI severity 0-10) ─────────────────────────────────
+thresholds:
+  soft-mute: 3
+  kick: 5
+  ban: 7
+  ip-ban: 9
+
+# ─── Punishment Settings ──────────────────────────────────────────────────────
+punishments:
+  soft-mute:
+    duration-seconds: 300
+    message: "&cBhai chill kar! Tu 5 minute ke liye mute ho gaya hai."
+
+  kick:
+    message: "&cServer se kick kiya gaya: &f{reason}"
+
+  ban:
+    command: "ban {player} 1h Toxic behavior: {reason}"
+
+  ip-ban:
+    command: "banip {player} Extreme toxicity: {reason}"
+
+  jail:
+    enabled: false
+    command: "jail {player} toxicjail"
+
+# ─── Violation Escalation ─────────────────────────────────────────────────────
+violations:
+  escalate-after: 3
+  reset-after-minutes: 30
+
+# ─── Messages ─────────────────────────────────────────────────────────────────
+messages:
+  blocked: "&cTera message block ho gaya. Seedha baat kar bhai."
+  muted: "&cTu abhi muted hai."
+  warning: "&eWarning: &f{reason}"
+  admin-notify: "&8[&cYadduGuard&8] &e{player} &7flagged &8| &fSeverity: {severity} &8| &7{reason}"
+
+# ─── Permissions ──────────────────────────────────────────────────────────────
+permissions:
+  bypass: "yaddguard.bypass"
+  admin: "yaddguard.admin"
+
+# ─── Debug ────────────────────────────────────────────────────────────────────
+debug: false

@@ -1,0 +1,8 @@
+{
+  "id": "yaddguard",
+  "name": "YadduGuard",
+  "version": "1.0.0",
+  "description": "AI-powered chat moderation for Velocity proxy",
+  "authors": ["YadduNetwork"],
+  "main": "fun.yaddu.guard.YadduGuard"
+}
